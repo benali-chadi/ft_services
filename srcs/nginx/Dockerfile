@@ -23,5 +23,5 @@ COPY	srcs/sshd_config /etc/ssh/
 
 CMD		["nohup", "/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
-# docker build .  -t nginx
-# docker run -it --name nginx -p 80:80 -p 443:443 -p 2222:22 nginx
+# docker build .  -t my_nginx
+# docker run -it --name my_nginx -p 80:80 -p 443:443 -p 2222:22 nginx
