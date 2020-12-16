@@ -14,6 +14,7 @@ COPY	srcs/vsftpduserlist.conf /etc/
 COPY	srcs/vsftpd.pem /etc/ssl/private/
 ARG 	IP
 ENV		DM_IP=${IP}
+RUN		echo "pasv_address=$DM_IP" >> /etc/vsftpd/vsftpd.conf
 
 COPY	srcs/supervisord.conf /etc/supervisord.conf
 # EXPOSE 	21 21000
