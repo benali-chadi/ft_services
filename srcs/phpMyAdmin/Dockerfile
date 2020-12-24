@@ -21,5 +21,5 @@ RUN		echo "www:www" | chpasswd && echo "root:root" | chpasswd
 COPY	srcs/supervisord.conf /etc/supervisord.conf
 CMD		["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
-# docker build . -t pma
+# docker build . -t my-pma
 # docker run -it --name pma -p 5000:5000 pma

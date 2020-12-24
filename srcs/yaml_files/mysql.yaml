@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-mysql
+  labels:
+    app: my-mysql
+spec:
+  type: ClusterIp
+  ports:
+  - port: 3036
+    targetPort: 3036
+    name: mysql
+  selector:
+    app: my-mysql
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: my-mysql
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: my-mysql
+    template:
+      metadata:
+        labels:
+          app: my-mysql
+      spec:
+        containers:
+        - name: my-mysql
+          image: my-mysql
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3036
+
+# kubectl apply -f <path-to-yaml-file>

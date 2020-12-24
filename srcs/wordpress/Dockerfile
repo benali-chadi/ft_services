@@ -20,5 +20,5 @@ rm -rf wordpress latest.tar.gz mysql-apt-config_0.8.13-1_all.deb phpMyAdmin-4.9.
 
 COPY	srcs/supervisord.conf /etc/supervisord.conf
 CMD		["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-# docker build .  -t wp
+# docker build .  -t my-wp
 # docker run -it --name wp -p 5050:5050 wp 
