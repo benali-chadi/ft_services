@@ -15,7 +15,8 @@ COPY	srcs/default.conf /etc/nginx/conf.d/
 RUN		echo "www:www" | chpasswd && echo "root:root" | chpasswd
 RUN		chown -R www:www wordpress/ && \
 mv wordpress/* /www/ && \
-rm -rf wordpress latest.tar.gz mysql-apt-config_0.8.13-1_all.deb phpMyAdmin-4.9.2-all-languages.tar.gz
+rm -rf wordpress latest.tar.gz
+COPY	srcs/wp-config.php /www/
 
 
 COPY	srcs/supervisord.conf /etc/supervisord.conf

@@ -15,6 +15,7 @@ mkdir /run/openrc && \
 touch /run/openrc/softlevel && \
 rc-status
 COPY	srcs/default.conf /etc/nginx/conf.d/
+RUN		mkdir /www/tmp; chmod 777 /www/tmp
 
 RUN		echo "www:www" | chpasswd && echo "root:root" | chpasswd
 
