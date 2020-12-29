@@ -9,7 +9,7 @@ mysql -u root -e "CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'admin'; FLUSH PRIVILEGES;"
 
 mariadb < /phpmyadmin.sql
-# mariadb < /wp_users.sql
+mariadb < /wpdata.sql
 /etc/init.d/mariadb stop
 
 /usr/bin/supervisord -c /etc/supervisord.conf

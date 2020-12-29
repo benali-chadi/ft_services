@@ -6,7 +6,7 @@ RUN		sh install.sh
 COPY 	srcs/mariadb-server.cnf /etc/my.cnf.d/
 COPY	srcs/supervisord.conf /etc/supervisord.conf
 COPY	srcs/phpmyadmin.sql /
-# COPY	srcs/wp_users.sql	/
+COPY	srcs/wpdata.sql	/
 # CMD		["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 CMD		sh start.sh
 
