@@ -1,39 +1,37 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress
+  name: grafana
   labels:
-    app: wordpress
+    app: grafana
   annotations:
-    metallb.universe.tf/allow-shared-ip: shared
+      metallb.universe.tf/allow-shared-ip: shared
 spec:
   type: LoadBalancer
   ports:
-  - port: 5050
-    targetPort: 5050
-    name: wordpress
+  - port: 3000
+    targetPort: 3000
+    name: grafana
   selector:
-    app: wordpress
+    app: grafana
 ---
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: wordpress
+    name: grafana
   spec:
     replicas: 1
     selector:
       matchLabels:
-        app: wordpress
+        app: grafana
     template:
       metadata:
         labels:
-          app: wordpress
+          app: grafana
       spec:
         containers:
-        - name: wordpress
-          image: wordpress
+        - name: grafana
+          image: grafana
           imagePullPolicy: Never
           ports:
-            - containerPort: 5050
-
-# kubectl apply -f <path-to-yaml-file>
+            - containerPort: 3000

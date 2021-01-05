@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-pma
+  name: phpmyadmin
   labels:
-    app: my-pma
+    app: phpmyadmin
   annotations:
       metallb.universe.tf/allow-shared-ip: shared
 spec:
@@ -11,27 +11,27 @@ spec:
   ports:
   - port: 5000
     targetPort: 5000
-    name: pma
+    name: phpmyadmin
   selector:
-    app: my-pma
+    app: phpmyadmin
 ---
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: my-pma
+    name: phpmyadmin
   spec:
     replicas: 1
     selector:
       matchLabels:
-        app: my-pma
+        app: phpmyadmin
     template:
       metadata:
         labels:
-          app: my-pma
+          app: phpmyadmin
       spec:
         containers:
-        - name: my-pma
-          image: my-pma
+        - name: phpmyadmin
+          image: phpmyadmin
           imagePullPolicy: Never
           ports:
             - containerPort: 5000

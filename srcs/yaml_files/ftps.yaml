@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-ftps
+  name: ftps
   labels:
-    app: my-ftps
+    app: ftps
   annotations:
       metallb.universe.tf/allow-shared-ip: shared
 spec:
@@ -17,25 +17,25 @@ spec:
   - port: 31111
     name: p2
   selector:
-    app: my-ftps
+    app: ftps
 ---
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: my-ftps
+    name: ftps
   spec:
     replicas: 1
     selector:
       matchLabels:
-        app: my-ftps
+        app: ftps
     template:
       metadata:
         labels:
-          app: my-ftps
+          app: ftps
       spec:
         containers:
-        - name: my-ftps
-          image: my-ftps
+        - name: ftps
+          image: ftps
           imagePullPolicy: Never
           ports:
             - containerPort: 21

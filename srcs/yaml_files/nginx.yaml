@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-nginx
+  name: nginx
   labels:
-    app: my-nginx
+    app: nginx
   annotations:
       metallb.universe.tf/allow-shared-ip: shared
 spec:
@@ -19,25 +19,25 @@ spec:
     targetPort: 22
     name: ssh
   selector:
-    app: my-nginx
+    app: nginx
 ---
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: my-nginx
+    name: nginx
   spec:
     replicas: 1
     selector:
       matchLabels:
-        app: my-nginx
+        app: nginx
     template:
       metadata:
         labels:
-          app: my-nginx
+          app: nginx
       spec:
         containers:
-        - name: my-nginx
-          image: my-nginx
+        - name: nginx
+          image: nginx
           imagePullPolicy: Never
           ports:
             - containerPort: 80
