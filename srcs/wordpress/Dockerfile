@@ -1,6 +1,5 @@
 FROM	alpine
 
-# RUN		apk update
 COPY	srcs/install.sh /
 RUN		sh install.sh
 RUN		adduser -D -g 'www' www; mkdir /www; chown -R www:www /www
@@ -18,8 +17,8 @@ mv wordpress/* /www/ && \
 rm -rf wordpress latest.tar.gz
 COPY	srcs/wp-config.php /www/
 
+COPY	/srcs/start.sh /
+COPY	/srcs/health.sh /
 
-COPY	srcs/supervisord.conf /etc/supervisord.conf
-CMD		["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-# docker build .  -t my-wp
-# docker run -it --name wp -p 5050:5050 wp 
+# COPY	srcs/supervisord.conf /etc/supervisord.conf
+CMD		sh start.sh

@@ -15,10 +15,10 @@ spec:
   clusterIP: 10.107.84.224
 ---
 
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: influxdb-pv-claim
+  name: influxdb
 spec:
   accessModes:
     - ReadWriteOnce
@@ -48,13 +48,20 @@ spec:
             - containerPort: 8086
           volumeMounts:
             - mountPath: "/var/lib/influxdb/data"
-              name: influxdb-pv
+              name: influxdb
             - mountPath: "/var/run/docker.sock"
               name: docker-sock
+          livenessProbe:
+              exec:
+                command:
+                - sh
+                - /health.sh
+              initialDelaySeconds: 5
+              periodSeconds: 5
         volumes:
-        - name: influxdb-pv
+        - name: influxdb
           persistentVolumeClaim:
-            claimName: influxdb-pv-claim
+            claimName: influxdb
         - name: docker-sock
           hostPath:
             path: /var/run/docker.sock

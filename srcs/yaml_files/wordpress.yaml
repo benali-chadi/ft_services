@@ -35,5 +35,10 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5050
-
-# kubectl apply -f <path-to-yaml-file>
+          livenessProbe:
+              exec:
+                command:
+                - sh
+                - /health.sh
+              initialDelaySeconds: 5
+              periodSeconds: 5

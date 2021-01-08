@@ -1,5 +1,5 @@
 #! /bin/sh
-chown -R mysql: /var/lib/mysql/
+/etc/init.d/mariadb setup
 service mariadb start
 
 mysql -u root -e "CREATE USER 'wp'@'%' IDENTIFIED BY 'wppass';"
@@ -12,4 +12,5 @@ mariadb < /phpmyadmin.sql
 mariadb < /wpdata.sql
 /etc/init.d/mariadb stop
 
-/usr/bin/supervisord -c /etc/supervisord.conf
+/usr/bin/mysqld_safe --datadir='/var/lib/mysql'
+# /usr/bin/supervisord -c /etc/supervisord.conf

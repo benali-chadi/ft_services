@@ -9,5 +9,7 @@ COPY	srcs/vsftpd.conf /etc/vsftpd/
 COPY	srcs/vsftpduserlist.conf /etc/
 COPY	srcs/vsftpd.pem /etc/ssl/private/
 
-COPY	srcs/supervisord.conf /etc/supervisord.conf
-CMD		["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+COPY	srcs/start.sh /
+COPY	srcs/health.sh /
+
+CMD		sh start.sh
