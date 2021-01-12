@@ -12,7 +12,3 @@ data:
       protocol: layer2
       addresses:
       - 192.168.99.115-192.168.99.115
-
-# annotations:
-# metallb.universe.tf/allow-shared-ip: shared
-# minikube addons enable metallb

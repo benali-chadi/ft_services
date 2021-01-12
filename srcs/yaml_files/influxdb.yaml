@@ -47,7 +47,7 @@ spec:
           ports:
             - containerPort: 8086
           volumeMounts:
-            - mountPath: "/var/lib/influxdb/data"
+            - mountPath: "/var/lib/influxdb"
               name: influxdb
             - mountPath: "/var/run/docker.sock"
               name: docker-sock
