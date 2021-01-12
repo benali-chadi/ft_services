@@ -17,15 +17,15 @@ then
 	echo "export PATH=$HOME/goinfre/.brew/bin:$PATH" >> $HOME/.zshrc
 fi
 
- # INSTALL DOCKER
- if [[ ! -f "$DOCKER_HOME" || -d "$DOCKER_GOINFRE" ]];
- then
- 	echo "----Installing Docker----"
- 	rm -rf $DOCKER_HOME && mkdir $DOCKER_GOINFRE
- 	ln -s $DOCKER_GOINFRE $DOCKER_HOME
- 	brew install docker docker-machine
- 	docker-machine create --driver virtualbox default
- fi
+#  # INSTALL DOCKER
+#  if [[ ! -f "$DOCKER_HOME" || -d "$DOCKER_GOINFRE" ]];
+#  then
+#  	echo "----Installing Docker----"
+#  	rm -rf $DOCKER_HOME && mkdir $DOCKER_GOINFRE
+#  	ln -s $DOCKER_GOINFRE $DOCKER_HOME
+#  	brew install docker docker-machine
+#  	docker-machine create --driver virtualbox default
+#  fi
 
 # INSTALL MINIKUBE
 if [[ ! -f "$MINIKUBE_HOME" || -d "$MINIKUBE_GOINFRE" ]];
@@ -47,6 +47,6 @@ echo    "export MINIKUBE_HOME=\"/Users/$USER/goinfre/.minikube\""   >> ~/.zshrc
 
 minikube start
 # docker-machine start
-eval $(docker-machine env default)
+# eval $(docker-machine env default)
 eval $(minikube docker-env)
 

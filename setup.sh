@@ -16,9 +16,6 @@ docker build srcs/grafana/ -t grafana
 
 # Apply the yaml files
 kubectl apply -f srcs/yaml_files/.
-# kubectl apply -f srcs/yaml_files/metallb.yaml
-# kubectl apply -f srcs/yaml_files/nginx.yaml
-# kubectl apply -f srcs/yaml_files/phpmyadmin.yaml
-# kubectl apply -f srcs/yaml_files/wordpress.yaml
-# kubectl apply -f srcs/yaml_files/mysql.yaml
-# kubectl apply -f srcs/yaml_files/ftps.yaml
+
+# Launch the dashboard
+minikube dashboard &

@@ -57,7 +57,7 @@ spec:
                 - sh
                 - /health.sh
               initialDelaySeconds: 5
-              periodSeconds: 5
+              periodSeconds: 3
         volumes:
         - name: influxdb
           persistentVolumeClaim:
